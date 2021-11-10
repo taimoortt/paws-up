@@ -5,9 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "pm2-runtime start ecosystem.config.js --env production",
-    "dev": "pm2-runtime start ecosystem.config.js --env development",
-    "run": "node server.js"
+    "start": "node server.js",
+    "build": "cd frontend/ && npm install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -21,7 +20,6 @@
   "homepage": "https://github.com/talal-code/paws-up#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.15",
-    "pm2": "^5.1.2"
+    "nodemon": "^2.0.15"
   }
 }
