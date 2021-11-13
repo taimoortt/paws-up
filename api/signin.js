@@ -11,8 +11,9 @@ router.post(`/signin/pawtner`, (req, res) => {
         if (err) throw err
         const password = result[0] && result[0].password
         if (password && password == req.body.password) {
-            const token = createToken(req.username, `pawtner`)
-            res.cookie('pawsup', token).status(200).json({})
+            const token = createToken(req.body.username, `pawtner`)
+            console.log(token)
+            res.cookie('token', token).status(200).json({})
         }
         else if (password) res.status(400).json({ error: `Password not correct.` })
         else res.status(400).json({ error: `Username does not exist.` })
@@ -27,9 +28,9 @@ router.post(`/signin/staff`, (req, res) => {
         if (err) throw err
         const password = result[0] && result[0].password
         if (password && password == req.body.password) {
-            const token = createToken(req.username, `staff`)
+            const token = createToken(req.body.username, `staff`)
             console.log(token)
-            res.cookie('pawsup', token).status(200).json({})
+            res.cookie('token', token).status(200).json({})
         }
         else if (password) res.status(400).json({ error: `Password not correct.` })
         else res.status(400).json({ error: `Username does not exist.` })
@@ -44,9 +45,9 @@ router.post(`/signin/admin`, (req, res) => {
         if (err) throw err
         const password = result[0] && result[0].password
         if (password && password == req.body.password) {
-            const token = createToken(req.username, `admin`)
+            const token = createToken(req.body.username, `admin`)
             console.log(token)
-            res.cookie('pawsup', token).status(200).json({})
+            res.cookie('token', token).status(200).json({})
         }
         else if (password) res.status(400).json({ error: `Password not correct.` })
         else res.status(400).json({ error: `Username does not exist.` })
