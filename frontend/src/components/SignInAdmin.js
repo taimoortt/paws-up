@@ -2,9 +2,8 @@ import React from "react"
 import { useNavigate } from "react-router-dom"
 import address from "../address"
 
-const SignIn = () => {
+const SignInAdmin = () => {
 
-    const [user, setUser] = React.useState(true)
     const [username, setUsername] = React.useState(``)
     const [password, setPassword] = React.useState(``)
 
@@ -18,7 +17,7 @@ const SignIn = () => {
             return
         }
 
-        const response = await fetch(`${address}/api/signin/${user ? `pawtner` : `staff`}`, {
+        const response = await fetch(`${address}/api/signin/admin`, {
             method: `Post`,
             headers: {
                 'Content-Type': 'application/json'
@@ -34,8 +33,8 @@ const SignIn = () => {
         const responseBody = await response.json()
 
         if (response.status === 200) {
-            console.log(`${user ? `pawtner` : `staff`} sign in success`)
-            user ? navigate(`/pawtnerhomepage/${username}`) : navigate(`/staffhomepage/${username}`)
+            console.log(`Admin sign in success`)
+            navigate(`/adminhomepage/${username}`)
         } else {
             alert(responseBody.error)
         }
@@ -44,14 +43,8 @@ const SignIn = () => {
     return (
         <React.Fragment>
             <h1>
-                Sign In Page
+                Admin Sign In Page
             </h1>
-            <button onClick={() => user ? "" : setUser(!user)} style={{ opacity: user ? 1 : 0.2 }}>
-                Pawtner
-            </button>
-            <button onClick={() => !user ? "" : setUser(!user)} style={{ opacity: !user ? 1 : 0.2 }}>
-                Staff
-            </button>
 
             <form onSubmit={submitForm}>
                 <label >
@@ -70,5 +63,4 @@ const SignIn = () => {
     )
 }
 
-
-export default SignIn
+export default SignInAdmin
