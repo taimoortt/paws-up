@@ -9,7 +9,7 @@ const conn = mysql.createConnection({
 
 conn.connect((err) => {
     if (err) throw err
-    console.log("Connected!")
+    console.log("DB Connected!")
 })
 
 console.log(`conn module ran`)

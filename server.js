@@ -1,6 +1,20 @@
 const express = require(`express`)
+const cookieParser = require(`cookie-parser`)
+const cors = require(`cors`)
+const bodyParser = require(`body-parser`)
 const app = express()
-const path = require(`path`)
+
+// parse application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
+
+app.use(cookieParser())
+app.use(cors({ origin: [`http://localhost:3000`], credentials: true }))
+// app.use(cors({credentials : true}))
+
 
 // react or frontend routes
 app.use(require(`./reactRouter`))
