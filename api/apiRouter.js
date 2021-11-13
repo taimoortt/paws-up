@@ -1,8 +1,7 @@
 const express = require(`express`)
 const router = express.Router()
+// const conn = require(`./conn`)
 
-router.get(`/`, (req, res) => {
-    res.send(`hello`)
-})
+router.use(require(`./auth`))
 
 module.exports = router
