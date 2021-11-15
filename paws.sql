@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 14, 2021 at 12:25 PM
+-- Generation Time: Nov 15, 2021 at 01:55 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -42,6 +42,21 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`username`, `full_name`, `email`, `password`, `phone_no`) VALUES
 ('nitro', 'Talal Touseef', '22100282@lums.edu.pk', 'beefchillidry', 923212212211),
 ('taimoor', 'Taimoor Tariq', 'taimoor.cf@gmail.com', 'pakistan', 923224864594);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `handles`
+--
+
+CREATE TABLE `handles` (
+  `id` int(6) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `staff_id` int(6) NOT NULL,
+  `approval_status` varchar(100) NOT NULL,
+  `progress_status` text NOT NULL,
+  `cost_incurred` int(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -124,6 +139,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`username`);
 
 --
+-- Indexes for table `handles`
+--
+ALTER TABLE `handles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pawtner`
 --
 ALTER TABLE `pawtner`
@@ -140,6 +161,18 @@ ALTER TABLE `reported_cases`
 --
 ALTER TABLE `staff`
   ADD PRIMARY KEY (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `handles`
+--
+ALTER TABLE `handles`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `reported_cases`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
